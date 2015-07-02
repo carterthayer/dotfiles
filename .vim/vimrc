@@ -1,0 +1,5 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+set t_Co=256
+colorscheme monokain
+set number
