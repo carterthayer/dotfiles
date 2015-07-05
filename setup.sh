@@ -26,4 +26,7 @@ for file in $FILES; do
 	ln -s $DIR/$file ~/$file
 done
 
-
+### Setup YouCompleteMe
+cd .vim/bundle/YouCompleteMe
+git submodule update --init --recursive
+./install.sh --clang-completer
