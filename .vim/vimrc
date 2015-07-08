@@ -1,5 +1,24 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
+
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+
+"Colors and syntax
 set t_Co=256
-colorscheme monokain
+colorscheme colorful256
+syntax on
 set number
+
+"Tabs
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+
+set mouse=a
+filetype indent plugin on
+set visualbell
+set ruler
+set autoindent
+set nowrap
+set colorcolumn=90
