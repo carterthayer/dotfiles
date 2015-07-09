@@ -8,9 +8,9 @@ FILES=".bashrc .vim .wallpaper.png .xmobarrc .xmonad .Xresources .xsessionrc"
 
 ### Install programs
 #TODO: Add command line flag to install these
-apt-get install libx11-dev xmonad suckless-tools xinit xmobar xterm x11-xserver-utils feh xcompmgr \
-	firefox python-pip python-dev cmake build-essentials
-pip install virtualenv
+apt-get install libx11-dev xmonad suckless-tools xinit xmobar xterm x11-xserver-utils \
+    feh xcompmgr firefox python-pip python-dev cmake build-essentials
+pip install virtualenv virtualenvwrapper
 
 ### Link in files
 
