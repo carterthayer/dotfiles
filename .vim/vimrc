@@ -5,8 +5,8 @@ let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 "Colors and syntax
 set t_Co=256
-colorscheme colorful256
-syntax on
+syntax enable
+colorscheme Monokai
 set number
 
 "Tabs
@@ -21,4 +21,4 @@ set visualbell
 set ruler
 set autoindent
 set nowrap
-set colorcolumn=90
+execute "set colorcolumn=" . join(range(90,335),',')
