@@ -121,4 +121,4 @@ export EDITOR="$VISUAL"
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
-transset .8 -a >/dev/null
+transset .9 -a >/dev/null

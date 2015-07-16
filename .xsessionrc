@@ -4,6 +4,6 @@ xrdb -merge ~/.Xresources
 
 feh --bg-scale ~/.wallpaper.png &
 
-xcompmgr -c &
+xcompmgr &
 
 exec xmonad
