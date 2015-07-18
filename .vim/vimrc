@@ -21,4 +21,12 @@ set visualbell
 set ruler
 set autoindent
 set nowrap
-execute "set colorcolumn=" . join(range(90,335),',')
+"Colors on right
+execute "set colorcolumn=" . join(range(100,335),',')
+
+"Load indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size =2
+
+"Autoload flake8
+autocmd BufWritePost *.py call Flake8()

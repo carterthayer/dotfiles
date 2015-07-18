@@ -13,18 +13,18 @@ VIRTUAL_ARG=false
 
 for i in "$@"; do
     if [ $i == "all" ]; then
-	PROGRAMS_ARG=true
-	FILES_ARG=true
-	VIRTUAL_ARG=true
+        PROGRAMS_ARG=true
+        FILES_ARG=true
+        VIRTUAL_ARG=true
     fi
     if [ $i == "programs" ]; then
-	PROGRAMS_ARG=true
+        PROGRAMS_ARG=true
     fi
     if [ $i == "files" ]; then
-	FILES_ARG=true
+        FILES_ARG=true
     fi
     if [ $i == "virtual" ]; then
-	VIRTUAL_ARG=true
+        VIRTUAL_ARG=true
     fi
 done
 
@@ -33,21 +33,21 @@ if [ $PROGRAMS_ARG = true ]; then
     apt-get install libx11-dev xmonad suckless-tools xinit xmobar xterm \
         x11-xserver-utils feh xcompmgr firefox python-pip python-dev \
         htop x11-apps
-    pip install virtualenv virtualenvwrapper
+    pip install virtualenv virtualenvwrapper jedi flake8
 fi
 
 ### Link in files
 if [ $FILES_ARG = true ]; then
     for file in $FILES; do
-    	if [ -e ~/$file ]
-    	then
-    		if [ ! -e ~/.dotfiles_old/ ]
-    		then
-    			mkdir ~/.dotfiles_old/
-    		fi
-    		mv ~/$file ~/.dotfiles_old/
-    	fi
-    	ln -s $DIR/$file ~/$file
+        if [ -e ~/$file ]
+        then
+            if [ ! -e ~/.dotfiles_old/ ]
+            then
+            	mkdir ~/.dotfiles_old/
+            fi
+            mv ~/$file ~/.dotfiles_old/
+        fi
+        ln -s $DIR/$file ~/$file
     done
 fi
 
