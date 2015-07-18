@@ -10,8 +10,7 @@ import System.IO
 main = do
     xmproc <- spawnPipe "xmobar"
 
-    xmonad $ defaultConfig
-    {
+    xmonad $ defaultConfig{
     manageHook = manageDocks <+> manageHook defaultConfig
     , layoutHook = spacing 3 $ avoidStruts  $  layoutHook defaultConfig
     , logHook = dynamicLogWithPP xmobarPP
