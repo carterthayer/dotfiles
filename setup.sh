@@ -43,7 +43,7 @@ if [ $FILES_ARG = true ]; then
         then
             if [ ! -e ~/.dotfiles_old/ ]
             then
-            	mkdir ~/.dotfiles_old/
+                mkdir ~/.dotfiles_old/
             fi
             mv ~/$file ~/.dotfiles_old/
         fi
@@ -55,7 +55,7 @@ fi
 ### Virtual box guest addition
 if [ $VIRTUAL_ARG = true ]; then
     mount /dev/cdrom /mnt
-    cd /mnt 
+    cd /mnt
     ./VBoxLinuxAdditions.run
     shutdown -r now
 fi
