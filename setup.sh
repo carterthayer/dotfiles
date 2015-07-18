@@ -32,7 +32,8 @@ done
 if [ $PROGRAMS_ARG = true ]; then
     apt-get install libx11-dev xmonad suckless-tools xinit xmobar xterm \
         x11-xserver-utils feh xcompmgr firefox python-pip python-dev \
-        htop x11-apps
+        htop x11-apps \
+        -y
     pip install virtualenv virtualenvwrapper jedi flake8
 fi
 
