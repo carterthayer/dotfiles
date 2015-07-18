@@ -1,5 +1,5 @@
 .xmonad/xmonad-x86_64-linux
 .xmonad/xmonad.o
-.xmonad/xmonad.hs 
+.xmonad/xmonad.hi
 .xmonad/xmonad.errors
 .vim/.netrwhist

@@ -31,8 +31,8 @@ done
 ### Install programs
 if [ $PROGRAMS_ARG = true ]; then
     apt-get install libx11-dev xmonad suckless-tools xinit xmobar xterm \
-        x11-xserver-utils feh xcompmgr firefox python-pip python-dev cmake \
-        build-essentials
+        x11-xserver-utils feh xcompmgr firefox python-pip python-dev \
+        htop x11-apps
     pip install virtualenv virtualenvwrapper
 fi
 
