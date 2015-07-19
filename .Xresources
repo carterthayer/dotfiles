@@ -28,3 +28,5 @@ XTerm*color14: #8ABEB7
 ! white
 XTerm*color7: #707880
 XTerm*color15: #C5C8C6
+
+XTerm*bellIsUrgent: true

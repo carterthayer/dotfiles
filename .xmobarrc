@@ -1,8 +1,8 @@
 Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
-        , borderColor = "black"
+        , borderColor = "#333232"
         , border = TopB
-        , bgColor = "black"
-        , fgColor = "grey"
+        , bgColor = "#333232"
+        , fgColor = "white"
         , position = TopW L 100
         , commands = [
             Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
@@ -13,5 +13,5 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
             ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% }<fc=#ee9a00>%time%</fc>{ %cpu% | %memory% | %date% "
+        , template = "%StdinReader% }<fc=#ea863b>%time%</fc>{ %cpu% | %memory% | <fc=#a541e0>%date%</fc> "
         }
