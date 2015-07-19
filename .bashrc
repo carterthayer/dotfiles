@@ -121,4 +121,9 @@ export EDITOR="$VISUAL"
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
-transset .9 -a >/dev/null
+
+X=$( pidof X )
+if [ ${#X} -gt 0 ]
+then
+    transset .9 -a >/dev/null
+fi
