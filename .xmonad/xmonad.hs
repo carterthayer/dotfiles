@@ -26,4 +26,5 @@ main = do
     , borderWidth = 1
     , normalBorderColor = "#707880"
     , focusedBorderColor = "#cc6666"
+    , focusFollowsMouse = False
     }
