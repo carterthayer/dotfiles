@@ -5,7 +5,15 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
         , fgColor = "white"
         , position = TopW L 100
         , commands = [
-            Run Cpu ["-L","3","-H","50","--normal","#40e2b4","--high","#ec4e3a"] 10
+                 Run Battery [
+                      "-t", "<acstatus>: <left>%",
+                      "--",
+                      "-O", "AC",
+                      "-o", "Bat",
+                      "-h", "green",
+                      "-l", "red"
+                    ] 10
+            , Run Cpu ["-L","3","-H","50","--normal","#40e2b4","--high","#ec4e3a"] 10
             , Run Memory ["-t","Mem: <usedratio>%"] 10
             , Run Date "%a %b %_d %Y" "date" 10
             , Run Date "%I:%M:%S" "time" 10
@@ -13,5 +21,5 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
             ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% }<fc=#ea863b>%time%</fc>{ %cpu% | %memory% | <fc=#a541e0>%date%</fc> "
+        , template = "%StdinReader% }<fc=#ea863b>%time%</fc>{ %battery% | %cpu% | %memory% | <fc=#a541e0>%date%</fc> "
         }
