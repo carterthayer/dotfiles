@@ -4,7 +4,7 @@
 DIR=`dirname $0`
 cd $DIR
 DIR=`pwd`
-FILES=".bashrc .vim .wallpaper.png .xmobarrc .xmonad .Xresources .xsessionrc"
+FILES=".bashrc .vim .wallpaper.png .xmobarrc .xmonad .Xresources .xsessionrc .config/nvim"
 
 PROGRAMS_ARG=false
 FILES_ARG=false
@@ -30,11 +30,15 @@ done
 
 ### Install programs
 if [ $PROGRAMS_ARG = true ]; then
+    apt-get install software-properties-common -y
+    add-apt-repository ppa:neovim-ppa/unstable -y
+    apt-get update
     apt-get install libx11-dev xmonad suckless-tools xinit xmobar xterm \
         x11-xserver-utils feh xcompmgr firefox python-pip python-dev \
-        htop x11-apps \
+        htop x11-apps python3 python3-dev python3-pip neovim \
         -y
     pip install virtualenv virtualenvwrapper jedi flake8
+    pip3 install neovim
 fi
 
 ### Link in files
