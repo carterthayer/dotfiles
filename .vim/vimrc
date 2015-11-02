@@ -1,6 +1,15 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+call plug#begin('~/.vim/plugged')
 
+Plug 'flazz/vim-colorschemes'
+Plug 'davidhalter/jedi-vim'
+Plug 'scrooloose/syntastic'
+Plug 'bling/vim-airline'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-fugitive'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'jmcantrell/vim-virtualenv'
+
+call plug#end()
 
 "Colors and syntax
 set t_Co=256
@@ -39,4 +48,5 @@ let g:airline_right_sep=''
 "let g:airline_symbols.space = "\ua0"
 set laststatus=2
 "Autoload flake8
-autocmd BufWritePost *.py call Flake8()
+"autocmd BufWritePost *.py call Flake8()
+
