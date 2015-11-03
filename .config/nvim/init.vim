@@ -1,7 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'w0ng/vim-hybrid'
-"Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
 Plug 'ntpeters/vim-better-whitespace'
@@ -51,4 +51,5 @@ let g:airline_right_sep=''
 set laststatus=2
 "Autoload flake8
 "autocmd BufWritePost *.py call Flake8()
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
+let g:jedi#force_py_version='auto'
