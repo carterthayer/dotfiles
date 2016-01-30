@@ -1,9 +1,0 @@
-#!/bin/bash
-
-xrdb -merge ~/.Xresources
-
-feh --bg-scale ~/.wallpaper.png &
-
-xcompmgr &
-
-exec xmonad

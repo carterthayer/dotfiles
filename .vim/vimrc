@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
@@ -14,7 +14,7 @@ call plug#end()
 "Colors and syntax
 set t_Co=256
 let g:hybrid_use_Xresources = 1
-colorscheme hybrid
+colorscheme gruvbox
 syntax on
 set number
 

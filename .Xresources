@@ -1,32 +1,38 @@
-! Hybrid Terminal Colours. Uses the palette from Tomorrow-Night:
-! https://github.com/chriskempson/tomorrow-theme/blob/master/vim/colors/Tomorrow-Night.vim
-! vim: ft=xdefaults
+*bellIsUrgent: true
+!-----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
 
-XTerm*background: #1D1F21
-XTerm*foreground: #C5C8C6
-! black
-XTerm*color0: #282A2E
-XTerm*color8: #373B41
-! red
-XTerm*color1: #A54242
-XTerm*color9: #CC6666
-! green
-XTerm*color2: #8C9440
-XTerm*color10: #B5BD68
-! yellow
-XTerm*color3: #DE935F
-XTerm*color11: #F0C674
-! blue
-XTerm*color4: #5F819D
-XTerm*color12: #81A2BE
-! magenta
-XTerm*color5: #85678F
-XTerm*color13: #B294BB
-! cyan
-XTerm*color6: #5E8D87
-XTerm*color14: #8ABEB7
-! white
-XTerm*color7: #707880
-XTerm*color15: #C5C8C6
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
 
-XTerm*bellIsUrgent: true
