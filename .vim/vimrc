@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/syntastic'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-fugitive'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -12,8 +12,9 @@ Plug 'jmcantrell/vim-virtualenv'
 call plug#end()
 
 "Colors and syntax
+set background=dark
 set t_Co=256
-let g:hybrid_use_Xresources = 1
+"let g:hybrid_use_Xresources = 1
 colorscheme gruvbox
 syntax on
 set number
@@ -41,6 +42,8 @@ let g:indent_guides_guide_size =2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline_theme='gruvbox'
+
 "let g:airline_powerline_fonts = 1
 "if !exists('g:airline_symbols')
 "    let g:airline_symbols = {}
@@ -49,4 +52,3 @@ let g:airline_right_sep=''
 set laststatus=2
 "Autoload flake8
 "autocmd BufWritePost *.py call Flake8()
-
