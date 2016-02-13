@@ -14,7 +14,7 @@ bspc config top_padding $PANEL_HEIGHT
 bspc subscribe report > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 clock -sf 'S%A %b %d, %G %H:%M' > "$PANEL_FIFO" &
-echo "B" | tr -d "\n" | cat - /sys/class/power_supply/BAT0/capacity > "$PANEL_FIFO" &
+panel_battery > "$PANEL_FIFO" &
 
 . panel_colors
 
