@@ -89,5 +89,5 @@ while read -r line ; do
 			done
 			;;
 	esac
-	printf "%s\n" "%{l}${wm}%{c}${title}%{r}${batt} ${sys}"
+	printf "%s\n" "%{l}${wm}%{c}${title}%{r}${batt} | ${sys}"
 done
