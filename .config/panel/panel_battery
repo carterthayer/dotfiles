@@ -2,6 +2,6 @@
 
 while true
 do
-    echo "BBatt: " | tr -d "\n" | cat - /sys/class/power_supply/BAT0/capacity
-    sleep 5
+    echo B "BAT: " | tr -d "\n" | cat - /sys/class/power_supply/BAT0/capacity
+    sleep 0.1
 done

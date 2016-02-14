@@ -1,0 +1,7 @@
+#!/bin/bash
+while true;
+do
+    ALSA_VOLUME=$(amixer -D pulse get Master | grep -o '...%' | head -n 1 | sed 's/\[//' | sed 's/%//' | sed 's/ //' )
+    echo V 'VOL:' $ALSA_VOLUME
+    sleep 0.1
+done
