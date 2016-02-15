@@ -37,5 +37,5 @@ XTerm*termName: xterm-256color
 *color7:  #a89984
 *color15: #ebdbb2
 
-*faceName: DejaVu Sans Mono
-*faceSize: 10
+*faceName: Inconsolata
+*faceSize: 11
