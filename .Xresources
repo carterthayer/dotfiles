@@ -1,3 +1,4 @@
+XTerm*termName: xterm-256color
 *bellIsUrgent: true
 !-----------------------------------------------------------------------------
 ! File: gruvbox-dark.xresources
@@ -36,4 +37,5 @@
 *color7:  #a89984
 *color15: #ebdbb2
 
-XTerm*bellIsUrgent: true
+*faceName: DejaVu Sans Mono
+*faceSize: 10
