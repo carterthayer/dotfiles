@@ -13,3 +13,6 @@
 [submodule "requirements/bspwm"]
 	path = requirements/bspwm
 	url = https://github.com/baskerville/bspwm.git
+[submodule "requirements/bar"]
+	path = requirements/bar
+	url = https://github.com/krypt-n/bar.git
