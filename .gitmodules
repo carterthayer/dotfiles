@@ -1,3 +1,15 @@
 [submodule ".vim/autoload/vim-plug"]
 	path = .vim/autoload/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
+[submodule "requirements/xtitle"]
+	path = requirements/xtitle
+	url = https://github.com/baskerville/xtitle.git
+[submodule "requirements/xdo"]
+	path = requirements/xdo
+	url = https://github.com/baskerville/xdo.git
+[submodule "requirements/sxhkd"]
+	path = requirements/sxhkd
+	url = https://github.com/baskerville/sxhkd.git
+[submodule "requirements/bspwm"]
+	path = requirements/bspwm
+	url = https://github.com/baskerville/bspwm.git
