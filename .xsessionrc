@@ -1,0 +1,24 @@
+#!/bin/bash
+
+NUM_MONITORS=$(xrandr -q | grep connected | wc -l)
+
+xrandr --newmode "1920x1080" 173.00 1920 2040 2248 2576  1080 1081 1084 1118  -hsync +vsync
+xrandr --newmode "1368x768" 85.86 1368 1440 1584 1800  768 769 772 795 -hsync +vsync
+
+if [ $NUM_MONITORS -eq '1'] ; then
+    xrandr --addmode VGA-0 1920x1080
+    xrandr --addmode VGA-0 1368x768
+    xrandr --output VGA-0 --mode 1920x1080
+elif [ $NUM_MONITORS -eq '2' ] ; then
+    xrandr --addmode VGA-0 1920x1080
+    xrandr --addmode VGA-0 1368x768
+    xrandr --output VGA-0 --mode 1920x1080
+
+    xrandr --addmode VGA-1 1920x1080
+    xrandr --addmode VGA-1 1368x768
+    xrandr --output VGA-1 --mode 1920x1080 --right-of VGA-0
+else
+    echo 'Cannot find output monitor'
+fi
+
+exec bspwm

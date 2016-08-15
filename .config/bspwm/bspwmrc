@@ -15,7 +15,8 @@ bspc config presel_feedback_color  "#a89984"
 bspc config auto_alternate       true
 bspc config auto_cancel          true
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor VGA-0 -d 1 2 3 4 5
+bspc monitor VGA-1 -d 6 7 8 9 10
 
 feh --bg-scale ~/.wallpaper.jpg
 
