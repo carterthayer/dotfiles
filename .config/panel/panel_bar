@@ -100,5 +100,5 @@ while read -r line ; do
 			done
 			;;
 	esac
-	printf "%s\n" "%{l}${wm}%{c}${title}%{r}${cpu} | ${mem} | ${batt} | ${volume} | ${sys}"
+	printf "%s\n" "%{l}${wm}%{c}${title}%{r}${cpu} | ${mem} | ${batt} |  ${sys}"
 done

@@ -8,8 +8,11 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-fugitive'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jmcantrell/vim-virtualenv'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
+
 
 "Colors and syntax
 set background=dark
@@ -31,24 +34,40 @@ set visualbell
 set ruler
 set autoindent
 set nowrap
+set hlsearch
+
 "Colors on right
 execute "set colorcolumn=" . join(range(100,335),',')
+"Make syntastic accept line lengths up to 100
+let g:syntastic_python_flake8_args = "--max-line-length=100"
 
 "Load indent guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size =2
+"
 "Air line
-"TODO: Figure out how to get fonts for this working correctly
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='gruvbox'
-
-"let g:airline_powerline_fonts = 1
-"if !exists('g:airline_symbols')
-"    let g:airline_symbols = {}
-"  endif
-"let g:airline_symbols.space = "\ua0"
+let g:ctrlp_open_multiple_files = 'ij'
+let g:ctrlp_tabpage_position = 'al'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
 set laststatus=2
-"Autoload flake8
-"autocmd BufWritePost *.py call Flake8()
+
+" Set ts file to javascript syntax
+autocmd BufNewFile,BufRead *.ts set syntax=javascript
+
+
+" DISABLE JEDI VIM
+"let g:jedi#auto_initialization = 0
+"
+vmap <F7> :w !xclip<CR><CR>
+map <S-F7> :r !xclip -o<CR>
+
+tab all
