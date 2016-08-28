@@ -8,7 +8,6 @@ libasound2-dev
 libxcb-xtest0-dev
 gcc
 make
-xcb-util-keysyms
 libxcb-keysyms1
 libxcb-keysyms1-dev
 xorg
@@ -19,3 +18,5 @@ libx11-xcb-dev
 keychain
 alsa-utils
 xcompmgr
+build-essential
+module-assistant
