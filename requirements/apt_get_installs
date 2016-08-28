@@ -18,3 +18,4 @@ libxft-dev
 libx11-xcb-dev
 keychain
 alsa-utils
+xcompmgr
