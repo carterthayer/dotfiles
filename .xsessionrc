@@ -2,21 +2,49 @@
 
 NUM_MONITORS=$(xrandr -q | grep connected | wc -l)
 
-xrandr --newmode "1920x1080" 173.00 1920 2040 2248 2576  1080 1081 1084 1118  -hsync +vsync
-xrandr --newmode "1368x768" 85.86 1368 1440 1584 1800  768 769 772 795 -hsync +vsync
+#xrandr --newmode "2560x1440"  311.83  2560 2744 3024 3488  1440 1441 1444 1490  -HSync +Vsync
+#xrandr --newmode "1920x1080" 173.00 1920 2040 2248 2576  1080 1081 1084 1118  -hsync +vsync
+#xrandr --newmode "1368x768" 85.86 1368 1440 1584 1800  768 769 772 795 -hsync +vsync
+
 
 if [ $NUM_MONITORS -eq '1'] ; then
-    xrandr --addmode VGA-0 1920x1080
-    xrandr --addmode VGA-0 1368x768
-    xrandr --output VGA-0 --mode 1920x1080
-elif [ $NUM_MONITORS -eq '2' ] ; then
-    xrandr --addmode VGA-0 1920x1080
-    xrandr --addmode VGA-0 1368x768
-    xrandr --output VGA-0 --mode 1920x1080
 
-    xrandr --addmode VGA-1 1920x1080
-    xrandr --addmode VGA-1 1368x768
-    xrandr --output VGA-1 --mode 1920x1080 --right-of VGA-0
+    MONITOR=VGA-0
+    RESOLUTION=$(xrandr -q | grep -A1 $MONITOR | grep -v $MONITOR | sed 's/\(x\|*\|+\|.00\)/ /g;s/^[ \t]*//;s/[ \t]*$//;s/ \+/ /g')
+    GTF_OUTPUT=$(gtf $(echo $RESOLUTION | cut -f1 -d ' ') $(echo $RESOLUTION | cut -f2 -d ' ') $(echo $RESOLUTION | cut -f3 -d ' '))
+    MODE_TO_ADD=$(echo $GTF_OUTPUT | grep -o "Modeline.*" | sed 's/Modeline //g')
+    MODE_NAME=$(echo $MODE_TO_ADD | grep -o '".*"' | sed 's/"//g')
+
+    xrandr --newmode $MODE_TO_ADD
+    MONITOR_1_MODE=\"$MODE_NAME\"
+
+    xrandr --addmode VGA-0 $MONITOR_1_MODE
+    xrandr --output VGA-0 --mode $MONITOR_1_MODE
+
+elif [ $NUM_MONITORS -eq '2' ] ; then
+    MONITOR=VGA-0
+    RESOLUTION=$(xrandr -q | grep -A1 $MONITOR | grep -v $MONITOR | sed 's/\(x\|*\|+\|.00\)/ /g;s/^[ \t]*//;s/[ \t]*$//;s/ \+/ /g')
+    GTF_OUTPUT=$(gtf $(echo $RESOLUTION | cut -f1 -d ' ') $(echo $RESOLUTION | cut -f2 -d ' ') $(echo $RESOLUTION | cut -f3 -d ' '))
+    MODE_TO_ADD=$(echo $GTF_OUTPUT | grep -o "Modeline.*" | sed 's/Modeline //g')
+    MODE_NAME=$(echo $MODE_TO_ADD | grep -o '".*"' | sed 's/"//g')
+
+    xrandr --newmode $MODE_TO_ADD
+    MONITOR_1_MODE=\"$MODE_NAME\"
+
+    MONITOR=VGA-1
+    RESOLUTION=$(xrandr -q | grep -A1 $MONITOR | grep -v $MONITOR | sed 's/\(x\|*\|+\|.00\)/ /g;s/^[ \t]*//;s/[ \t]*$//;s/ \+/ /g')
+    GTF_OUTPUT=$(gtf $(echo $RESOLUTION | cut -f1 -d ' ') $(echo $RESOLUTION | cut -f2 -d ' ') $(echo $RESOLUTION | cut -f3 -d ' '))
+    MODE_TO_ADD=$(echo $GTF_OUTPUT | grep -o "Modeline.*" | sed 's/Modeline //g')
+    MODE_NAME=$(echo $MODE_TO_ADD | grep -o '".*"' | sed 's/"//g')
+
+    xrandr --newmode $MODE_TO_ADD
+    MONITOR_2_MODE=\"$MODE_NAME\"
+
+    xrandr --addmode VGA-0 $MONITOR_1_MODE
+    xrandr --output VGA-0 --mode $MONITOR_1_MODE
+
+    xrandr --addmode VGA-1 $MONITOR_2_MODE
+    xrandr --output VGA-1 --mode $MONITOR_2_MODE --right-of VGA-0
 else
     echo 'Cannot find output monitor'
 fi
