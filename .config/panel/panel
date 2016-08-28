@@ -15,8 +15,8 @@ bspc subscribe report > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 panel_date > "$PANEL_FIFO" &
 #clock -sf 'S%a %b %d, %G %H:%M' > "$PANEL_FIFO" &
-panel_battery > "$PANEL_FIFO" &
-panel_volume > "$PANEL_FIFO" &
+#panel_battery > "$PANEL_FIFO" &
+#panel_volume > "$PANEL_FIFO" &
 panel_cpu > "$PANEL_FIFO" &
 panel_memory > "$PANEL_FIFO" &
 
