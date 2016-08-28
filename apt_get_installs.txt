@@ -20,3 +20,5 @@ alsa-utils
 xcompmgr
 build-essential
 module-assistant
+suckless-tools
+iceweasel
