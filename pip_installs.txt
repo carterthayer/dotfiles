@@ -1,2 +1,3 @@
 virtualenvwrapper
 jedi
+flake8
