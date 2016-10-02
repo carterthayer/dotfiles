@@ -11,6 +11,8 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'shime/vim-livedown'
+Plug 'pangloss/vim-javascript'
+Plug 'mvx/vim-jsx'
 
 call plug#end()
 
@@ -72,3 +74,8 @@ vmap <F7> :w !xclip<CR><CR>
 map <S-F7> :r !xclip -o<CR>
 
 tab all
+
+" set a different locations for backups to allow react scripts livereload to
+" continue to work
+set backupdir-=.
+set backupdir^=~/tmp,/tmp
