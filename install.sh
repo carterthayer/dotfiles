@@ -2,8 +2,8 @@
 
 # install requirements from apt-get and pip
 
-sudo apt-get install $(grep -vE "^\s*#" apt_get_installs | tr "\n" " ")
-sudo pip install $(grep -vE "^\s*#" pip_installs | tr "\n" " ")
+sudo apt-get install $(grep -vE "^\s*#" apt_get_installs.txt | tr "\n" " ")
+sudo pip install $(grep -vE "^\s*#" pip_installs.txt | tr "\n" " ")
 
 # this is needed for virtualbox guest additions, but requires the uname -r in it
 sudo apt-get install linux-headers-$(uname -r)
