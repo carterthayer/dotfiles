@@ -61,6 +61,7 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|build)|(\.(swp|git))$'
 set laststatus=2
 
 " Set ts file to javascript syntax
