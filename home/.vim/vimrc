@@ -6,6 +6,7 @@ Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-abolish'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'editorconfig/editorconfig-vim'
@@ -24,6 +25,9 @@ set t_Co=256
 colorscheme gruvbox
 syntax on
 set number
+
+set splitright
+set t_vb=
 
 "Tabs
 set tabstop=4
