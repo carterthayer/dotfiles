@@ -133,7 +133,13 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-source /usr/local/bin/virtualenvwrapper.sh
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+pyenv virtualenvwrapper
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+
+
 
 keychain -q ~/.ssh/id_rsa
 source ~/.keychain/$HOSTNAME-sh
@@ -142,4 +148,8 @@ X=$( pidof X )
 if [ ${#X} -gt 0 ]
 then
         transset .97 -a >/dev/null
+fi
+
+if [ -f "$HOME/.proxyrc" ]; then
+. "$HOME/.proxyrc"
 fi
