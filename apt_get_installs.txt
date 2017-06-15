@@ -21,4 +21,5 @@ xcompmgr
 build-essential
 module-assistant
 suckless-tools
-iceweasel
+vim-nox
+firefox
