@@ -107,7 +107,14 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# PYENV
 export PYENV_ROOT="$HOME/.pyenv"
+if [ ! -d $PYENV_ROOT/plugins/pyenv-virtualenv ]; then
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
+fi
+if [ ! -d $PYENV_ROOT/plugins/pyenv-virtualenvwrapper ]; then
+    git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $PYENV_ROOT/plugins/pyenv-virtualenvwrapper
+fi
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 pyenv virtualenvwrapper
@@ -115,6 +122,7 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 
 
+chmod 600 ~/.ssh/id_rsa
 keychain -q ~/.ssh/id_rsa
 source ~/.keychain/$HOSTNAME-sh
 

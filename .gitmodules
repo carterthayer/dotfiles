@@ -16,3 +16,6 @@
 [submodule "requirements/bar"]
 	path = requirements/bar
 	url = https://github.com/krypt-n/bar.git
+[submodule "home/.pyenv"]
+	path = home/.pyenv
+	url = https://github.com/pyenv/pyenv
