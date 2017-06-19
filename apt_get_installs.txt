@@ -22,5 +22,5 @@ build-essential
 module-assistant
 suckless-tools
 vim-nox
-firefox
+firefox-esr
 rofi
