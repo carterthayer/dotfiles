@@ -18,7 +18,7 @@ pushd $BASEDIR/requirements/
 for i in $(ls -d -- */); do
     pushd $i
     make
-    make install
+    sudo make install
     make clean
     popd
 done
@@ -27,7 +27,7 @@ popd
 if [[ $(sudo dmesg | grep VirtualBox) ]] && [ -z "$(lsmod | grep vboxguest)" ]; then
     read -p "Please add VirtualBox guest additions [y/n]:" yn
         case $yn in
-            [Yy]* ) sudo sh /media/cdrom/VBoxLinuxAdditions.run; break;;
+            [Yy]* ) sudo mount /media/cdrom; sudo sh /media/cdrom/VBoxLinuxAdditions.run; break;;
             * ) break;;
         esac
 fi
