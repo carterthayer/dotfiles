@@ -21,10 +21,10 @@ NUM_MONITORS=$(xrandr -q | grep connected | wc -l)
 
 
 if [ $NUM_MONITORS -eq '1'] ; then
-    add_monitor VGA-0
+    add_monitor VGA-1
 elif [ $NUM_MONITORS -eq '2' ] ; then
-    add_monitor VGA-0
-    add_monitor VGA-1 VGA-0
+    add_monitor VGA-1
+    add_monitor VGA-2 VGA-1
 else
     echo 'Cannot find output monitor'
 fi

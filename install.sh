@@ -39,7 +39,6 @@ for i in $(ls -A); do
     ln -sv $(pwd)/$i ~/
 done
 popd
-/bin/bash: xclip: command not found
 
 # vim plugins
 if command -v vim >/dev/null 2>&1; then
