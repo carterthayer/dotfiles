@@ -13,7 +13,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'shime/vim-livedown'
 Plug 'pangloss/vim-javascript'
-Plug 'mvx/vim-jsx'
 
 call plug#end()
 
