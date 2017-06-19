@@ -24,10 +24,18 @@ for i in $(ls -d -- */); do
 done
 popd
 
-if [[ $(dmesg | grep VirtualBox) ]] && [ -z "$(lsmod | grep vboxguest)" ]; then
+if [[ $(sudo dmesg | grep VirtualBox) ]] && [ -z "$(lsmod | grep vboxguest)" ]; then
     read -p "Please add VirtualBox guest additions [y/n]:" yn
         case $yn in
             [Yy]* ) sudo sh /media/cdrom/VBoxLinuxAdditions.run; break;;
             * ) break;;
         esac
 fi
+
+# link dot files
+pushd home/
+for i in $(ls -A); do
+    rm -r ~/$i || true
+    ln -sv $(pwd)/$i ~/
+done
+popd
