@@ -7,7 +7,10 @@ BASEDIR=`dirname $0`
 sudo apt-get -y update
 
 sudo apt-get -y install $(grep -vE "^\s*#" $BASEDIR/apt_get_installs.txt | tr "\n" " ")
-sudo pip install -U pip
+
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+rm get-pip.py
 sudo pip install $(grep -vE "^\s*#" $BASEDIR/pip_installs.txt | tr "\n" " ")
 
 # this is needed for virtualbox guest additions, but requires the uname -r in it
