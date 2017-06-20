@@ -13,9 +13,6 @@ alias cclear='clear'
 alias gti='git'
 alias svim='vim'
 
-#git undo commit
-alias guc='git reset --soft HEAD~'
-
 alias pytohn='python'
 
 # Add an "alert" alias for long running commands.  Use like so:
