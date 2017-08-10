@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'morhetz/gruvbox'
-Plug 'davidhalter/jedi-vim'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'ntpeters/vim-better-whitespace'
@@ -13,6 +13,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'shime/vim-livedown'
 Plug 'pangloss/vim-javascript'
+Plug 'vim-scripts/MultipleSearch'
 
 call plug#end()
 
@@ -44,10 +45,11 @@ set autoindent
 set nowrap
 set hlsearch
 
+let line_length = 100
 "Colors on right
-execute "set colorcolumn=" . join(range(100,335),',')
-"Make syntastic accept line lengths up to 100
-let g:ale_python_flake8_args = "--max-line-length=100"
+execute "set colorcolumn=" . join(range(line_length+1,335),',')
+"Make ale flake8 accept line lengths up to 100
+let g:ale_python_flake8_args = "--max-line-length=" . string(line_length)
 
 "Load indent guides
 let g:indent_guides_enable_on_vim_startup = 1
@@ -58,6 +60,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='gruvbox'
+
 let g:ctrlp_open_multiple_files = 'ij'
 let g:ctrlp_tabpage_position = 'al'
 let g:ctrlp_map = '<c-p>'
@@ -73,9 +76,8 @@ set laststatus=2
 autocmd BufNewFile,BufRead *.ts set syntax=javascript
 
 
-" DISABLE JEDI VIM
-"let g:jedi#auto_initialization = 0
-"
+let g:ycm_python_binary_path = 'python'
+
 vmap <F7> :w !xclip<CR><CR>
 map <S-F7> :r !xclip -o<CR>
 
@@ -85,3 +87,9 @@ tab all
 " continue to work
 set backupdir-=.
 set backupdir^=~/tmp,/tmp
+
+" keep the left gutter open, so it doesn't move my text to the right while I'm
+" typing
+autocmd BufEnter * sign define dummy
+autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+

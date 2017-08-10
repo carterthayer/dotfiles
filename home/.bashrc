@@ -85,10 +85,6 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -119,6 +115,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 pyenv virtualenvwrapper
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
 
 
@@ -133,5 +130,8 @@ then
 fi
 
 if [ -f "$HOME/.proxyrc" ]; then
-. "$HOME/.proxyrc"
+    . "$HOME/.proxyrc"
 fi
+
+# ripgrep
+export PATH="~/.ripgrep:$PATH"
