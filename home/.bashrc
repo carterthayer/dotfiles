@@ -135,3 +135,7 @@ fi
 
 # ripgrep
 export PATH="~/.ripgrep:$PATH"
+
+export PROJECT_HOME="/home/carter/git"
+
+loadhistory $HOME

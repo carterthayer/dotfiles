@@ -5,3 +5,4 @@
 	default = simple
 [alias]
     undo = reset --soft HEAD~
+    staged = diff --staged
