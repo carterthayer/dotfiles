@@ -26,6 +26,9 @@ alias untar='tar -xvzf'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+
+alias rmpyc="find . -name '*.pyc' -delete"
+
 #
 # Usage: rf <search string>
 #
@@ -114,18 +117,17 @@ function mycd()
   #
   # if we're entering a project directory, check for a virtualenv
   #
-  this_dir=$(basename "$PWD")
-  parent_dir=$(dirname "$PWD")
-  if [ ! -z "$PROJECT_HOME" -a "$parent_dir" == "$PROJECT_HOME" ]; then
-    if [ -z "$WORKINGON" ]; then
-      if [ -d "$WORKON_HOME/${this_dir}" ]; then
-          if [ -z "$VIRTUAL_ENV" ] || [ "$(basename $VIRTUAL_ENV)" != "$this_dir" ]; then
-            echo "Activating virtualenv $this_dir..."
-            export WORKINGON="$this_dir"
-            workon "${this_dir}"
+  if [ -z "$WORKINGON" ]; then
+    for venv_dir in $WORKON_HOME/*; do
+        if [ -f "$venv_dir/.project" ] && [ "$(cat $venv_dir/.project)" == "$PWD" ]; then
+          if [ -z "$VIRTUAL_ENV" ] ; then
+            venv_name=$(basename "$venv_dir")
+            echo "Activating virtualenv $venv_name..."
+            export WORKINGON="$venv_name"
+            workon "${venv_name}"
           fi
-      fi
-    fi
+        fi
+    done
   else
     unset WORKINGON
   fi
