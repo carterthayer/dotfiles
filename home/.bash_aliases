@@ -22,11 +22,6 @@ alias ptpython3='python3 -m ptpython'
 alias untar='tar -xvzf'
 
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-
 alias rmpyc="find . -name '*.pyc' -delete"
 
 #
@@ -41,6 +36,16 @@ rf(){
                 echo "$f"
         done
         ' find-sh {} +
+}
+
+#
+# Usage: rv <search string>
+#
+# Search for provided string with rg and open the files containing with the string highlighted in vim.
+#
+#
+rv(){
+    vim $(rg -l "$@") +/"$@"
 }
 
 
@@ -67,13 +72,10 @@ awsprofile(){
 old(){
     file=./$@
     filename=$(basename "$file")
-    extension="${filename##*.}"
-    syntax=$extension
-    if [ $extension == 'py' ]
-    then
-        syntax='python'
-    fi
-    vim <(git show HEAD:$file) -c "set syntax=$syntax"
+    temp_dir=$(mktemp -d)
+
+    git show HEAD:$file > $temp_dir/$filename
+    vim $temp_dir/$filename
 }
 
 #
@@ -110,7 +112,14 @@ function mycd()
   #
   history -w # write current history file
 
-  builtin cd "$@"  # do actual cd
+  # do actual cd
+  builtin cd "$@"
+
+  #if [[ $# -ne 0 ]] || [ -z "$VIRTUAL_ENV" ] && [ ! -f "$VIRTUAL_ENV/.project" ]; then
+  #  builtin cd "$@"
+  #else
+  #  builtin cd $(cat "$VIRTUAL_ENV/.project")
+  #fi
 
   loadhistory "$@"
 
