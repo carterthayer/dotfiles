@@ -3,11 +3,11 @@
 #
 
 # terminal emulator
-alt + Return
+{super, alt} + Return
 	xterm
 
 # program launcher
-alt + space
+{super, alt} + space
 	rofi -show run
 
 # make sxhkd reload its configuration files:
@@ -23,7 +23,7 @@ alt + super + Escape
 	bspc quit
 
 # close and kill
-alt + {_,shift + }w
+{alt, super} + {_,shift + }w
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -82,8 +82,10 @@ alt + {o,i}
 
 # focus or send to the given desktop
 alt + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} {1,2,3,4,5,6,7,8,9,10}
 
+super + {_,shift + }{1-5,0}
+	bspc {desktop -f,node -d} {L1, L2, L3, L4, L5}
 #
 # preselect
 #
