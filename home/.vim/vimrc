@@ -97,3 +97,25 @@ autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('
 " shortcuts to jump to next/previous ale problems
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+function! PatchArgs()
+    let line_number = line(".")
+    let imports = []
+    let line_number -= 1
+    while strpart(getline(line_number), 0, 6) == "@patch"
+        let line_text = getline(line_number)
+        let first_quote = matchend(line_text, "\"")
+        let second_quote = match(line_text, "\"", first_quote)
+        let quoted_string = strpart(line_text, first_quote, second_quote - first_quote)
+        let imports += [split(quoted_string, '\.')[-1]]
+        let line_number -= 1
+    endwhile
+    let imports_text =join(imports, ", ")
+    return imports_text
+endfunction
+
+let g:S = 0  "result in global variable S
+function! Sum(number)
+    let g:S = g:S + a:number
+    return a:number
+endfunction
