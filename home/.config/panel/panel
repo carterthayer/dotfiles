@@ -12,7 +12,7 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-bspc config -m VGA-1 top_padding $PANEL_HEIGHT
+bspc config -m DP-1-1 top_padding $PANEL_HEIGHT
 bspc subscribe report > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
 panel_date > "$PANEL_FIFO" &
@@ -28,7 +28,7 @@ panel_memory > "$PANEL_FIFO" &
 geometry=x$PANEL_HEIGHT
 NUM_MONITORS=$(xrandr -q | grep connected | wc -l)
 if [ $NUM_MONITORS -eq '2' ] ; then
-    MONITOR=VGA-1
+    MONITOR=DP-1-1
     xRes=$(xrandr -q | grep -A1 $MONITOR | grep -v $MONITOR | sed 's/\(x\|*\|+\|.00\)/ /g;s/^[ \t]*//;s/[ \t]*$//;s/ \+/ /g' |  awk '{print $1;}')
     geometry=$xRes$geometry
 elif [ $NUM_MONITORS -eq '3' ] ; then
@@ -36,7 +36,7 @@ elif [ $NUM_MONITORS -eq '3' ] ; then
     MONITOR=VGA-3
     offsetRes=$(xrandr -q | grep -A1 $MONITOR | grep -v $MONITOR | sed 's/\(x\|*\|+\|.00\)/ /g;s/^[ \t]*//;s/[ \t]*$//;s/ \+/ /g' |  awk '{print $1;}')
 
-    MONITOR=VGA-1
+    MONITOR=DP-1-1
     mainRes=$(xrandr -q | grep -A1 $MONITOR | grep -v $MONITOR | sed 's/\(x\|*\|+\|.00\)/ /g;s/^[ \t]*//;s/[ \t]*$//;s/ \+/ /g' |  awk '{print $1;}')
     geometry=$mainRes$geometry$offsetRes
     echo $geometry

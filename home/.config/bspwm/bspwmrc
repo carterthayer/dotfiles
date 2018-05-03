@@ -4,7 +4,8 @@ sxhkd &
 
 bspc config border_width         2
 bspc config window_gap          12
-bspc config -m VGA-1 top_padding          7
+bspc config -m DP-1-1 top_padding 27
+bspc config -m eDP-1  top_padding 27
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
@@ -15,20 +16,64 @@ bspc config presel_feedback_color  "#a89984"
 bspc config auto_alternate       true
 bspc config auto_cancel          true
 
-NUM_MONITORS=$(xrandr -q | grep connected | wc -l)
+get_mode (){
+    # $1 is monitor name... $2 is supplied to right of
+    MONITOR=$1
+    RESOLUTION=$(xrandr -q | grep -A1 $MONITOR | grep -v $MONITOR | sed 's/\(x\|*\|+\|.00\)/ /g;s/^[ \t]*//;s/[ \t]*$//;s/ \+/ /g')
+    GTF_OUTPUT=$(gtf $(echo $RESOLUTION | cut -f1 -d ' ') $(echo $RESOLUTION | cut -f2 -d ' ') $(echo $RESOLUTION | cut -f3 -d ' '))
+    MODE_TO_ADD=$(echo $GTF_OUTPUT | grep -o "Modeline.*" | sed 's/Modeline //g')
+    MODE_NAME=\"$(echo $MODE_TO_ADD | grep -o '".*"' | sed 's/"//g')\"
+    xrandr --newmode $MODE_TO_ADD
+    xrandr --addmode $MONITOR $MODE_NAME
+    echo $MODE_NAME
+}
+add_monitor ()
+{
+    MODE_NAME=$(get_mode $1)
+    if [ $# -eq 1 ]; then
+        xrandr --output $MONITOR --mode $MODE_NAME
+    else
+        xrandr --output $MONITOR --mode $MODE_NAME --right-of $2
+    fi
+}
+add_monitor_rotate_left ()
+{
+    MODE_NAME=$(get_mode $1 -r)
+    if [ $# -eq 1 ]; then
+        xrandr --output $MONITOR --mode $MODE_NAME --rotate left
+    else
+        xrandr --output $MONITOR --mode $MODE_NAME --right-of $2 --rotate left
+    fi
+}
+
+NUM_MONITORS=$(xrandr -q | grep connected | grep -v "disconnected" | wc -l)
+echo $NUM_MONITORS
+
 
 if [ $NUM_MONITORS -eq '1' ] ; then
-    bspc monitor VGA-1 -d 1 2 3 4 5 6 7 8 9 10
+    add_monitor eDP-1
+    bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
 elif [ $NUM_MONITORS -eq '2' ] ; then
+    add_monitor VGA-1
+    add_monitor VGA-2 VGA-1
     bspc monitor VGA-1 -d 1 2 3 4 5 6 7
     bspc monitor VGA-2 -d 8 9 10
 elif [ $NUM_MONITORS -eq '3' ] ; then
-    bspc monitor VGA-3 -d L1 L2 L3 L4 L5
-    bspc monitor VGA-1 -d 1 2 3 4 5 6 7
-    bspc monitor VGA-2 -d 8 9 10
+    add_monitor VGA-3
+    add_monitor VGA-1 VGA-3
+    add_monitor VGA-2 VGA-1
+elif [ $NUM_MONITORS -eq '4' ] ; then
+    add_monitor_rotate_left DP-1-2
+    add_monitor DP-1-1 DP-1-2
+    add_monitor DP-1-3 DP-1-1
+
+    bspc monitor DP-1-2 -d L1 L2 L3 L4 L5
+    bspc monitor DP-1-1 -d 1 2 3 4 5 6 7
+    bspc monitor DP-1-3 -d 8 9 10
 else
     echo 'Cannot find output monitor'
 fi
+
 
 feh --bg-center ~/.wallpaper.jpg
 
@@ -36,4 +81,4 @@ xrdb ~/.Xresources
 
 xcompmgr &
 
-panel &
+polybar example &
