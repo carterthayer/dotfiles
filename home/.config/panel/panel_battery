@@ -1,7 +1,0 @@
-#! /bin/sh
-
-while true
-do
-    echo B "BAT: " | tr -d "\n" | cat - /sys/class/power_supply/BAT0/capacity
-    sleep 1
-done
