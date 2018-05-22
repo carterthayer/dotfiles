@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/carter/git/plots-api/docs'
-let g:netrw_dirhist_2='/home/carter/git/plots-api/plots_api'
-let g:netrw_dirhist_3='/home/carter/git/plots-api/test'
-let g:netrw_dirhist_4='/home/carter/git/plots-api/plots_api'
-let g:netrw_dirhist_5='/home/carter/git/plots-api/docs'
-let g:netrw_dirhist_6='/home/carter/git/plots-api/do'
-let g:netrw_dirhist_7='/home/carter/git/plots-api/alembic'
