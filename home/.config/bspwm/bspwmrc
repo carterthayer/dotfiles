@@ -33,3 +33,7 @@ fi
 
 
 xrdb "${HOME}/.Xresources"
+
+# Background from Toptal Subtle Patterns
+# https://www.toptal.com/designers/subtlepatterns/dark-sharp-edges/
+feh --bg-tile ~/.wallpaper.png
