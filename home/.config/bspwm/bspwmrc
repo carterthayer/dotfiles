@@ -12,6 +12,7 @@ bspc config focus_by_distance    true
 bspc config history_aware_focus  true
 bspc config auto_alternate       true
 bspc config auto_cancel          true
+bspc config click_to_focus       true
 
 
 NUM_MONITORS=$(xrandr -q | grep connected | grep -v "disconnected" | wc -l)
@@ -30,3 +31,5 @@ else
     echo 'Cannot find output monitor'
 fi
 
+
+xrdb "${HOME}/.Xresources"
