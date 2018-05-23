@@ -1,0 +1,1 @@
+pactl set-sink-volumne 0 $1%
