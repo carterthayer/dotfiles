@@ -126,8 +126,7 @@ menu-0-0 = 
 menu-0-0-exec = shutdown now
 menu-0-1 = 
 menu-0-1-exec = shutdown -r now
-menu-0-2 = 
-menu-0-2-exec = dm-tool lock
+
 
 [module/battery]
 type = internal/battery

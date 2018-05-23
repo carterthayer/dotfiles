@@ -1,6 +1,4 @@
 lightdm
-lightdm-gtk-greeter
-lightdm-gtk-greeter-settings
 ubuntu-drivers-common
 compton
 xorg
@@ -35,3 +33,4 @@ vim-nox
 vim-gtk
 dunst
 fonts-font-awesome
+i3-lock-fancy

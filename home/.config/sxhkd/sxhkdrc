@@ -139,4 +139,4 @@ alt + @button{1-3}
 	; bspc pointer -u
 
 super + l
-    dm-tool lock
+    i3lock-fancy -f Inconsolata
