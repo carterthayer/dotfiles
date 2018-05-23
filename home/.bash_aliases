@@ -23,6 +23,8 @@ alias untar='tar -xvzf'
 
 
 alias rmpyc="find . -name '*.pyc' -delete"
+alias wifi-scan="nmcli device wifi rescan && nmcli device wifi list"
+alias wifi-connect="nmcli device wifi connect"
 
 #
 # Usage: rf <search string>
