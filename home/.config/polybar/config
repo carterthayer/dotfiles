@@ -27,7 +27,7 @@ alert = ${xrdb:color1}
 [bar/laptop]
 monitor = ${env:MONITOR:eDP-1}
 width = 100%
-height = 25
+height = 20
 offset-x = 0
 offset-y = 0
 ;radius = 16.0
@@ -49,8 +49,8 @@ padding-right = 1
 module-margin-left = 0
 module-margin-right = 2
 
-font-0 = Inconsolata:size=11;3
-font-1 = Inconsolata:size=2;3
+font-0 = Inconsolata:size=10;3
+font-1 = FontAwesome:size=10;3
 
 modules-left = bspwm
 modules-center = xwindow
@@ -67,7 +67,8 @@ cursor-scroll = ns-resize
 
 [module/cal]
 type = custom/script
-exec = date '+%a %l:%M %p' | sed 's/  / /'
+; there's a clock icon in that echo
+exec = echo  `date '+%a %l:%M %p' | sed 's/  / /'`
 interval = 30
 format-foreground = ${colors.foreground}
 ;click-left = gsimplecal
@@ -98,7 +99,7 @@ label-urgent-underline = ${colors.alert}
 label-empty = %name%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
-label-font = 1
+label-font = 0
 
 ;bar-width = 10
 ;bar-indicator = |
@@ -138,20 +139,30 @@ full-at = 99
 battery = BAT0
 adapter = ADP1
 poll-interval = 5
-label-charging = BAT ↑%percentage%
-label-discharging = BAT ↓%percentage%
-lable-fully = BAT ↑%percentage%
+format-charging
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = %percentage%%
 
+format-charging = <ramp-capacity> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+;format-full = <ramp-capacity> <label-full>
+
+ramp-capacity-0 =
+ramp-capacity-1 =
+ramp-capacity-2 =
+ramp-capacity-3 =
+ramp-capacity-4 =
 
 [module/cpu]
 type = internal/cpu
 format = <label>
-label = CPU %percentage%%
+label = %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 3
-label = MEM %percentage_used%%
+label = %percentage_used%%
 
 [settings]
 screenchange-reload = true
