@@ -34,3 +34,4 @@ libxcb-cursor-dev
 vim-nox
 vim-gtk
 dunst
+fonts-font-awesome
