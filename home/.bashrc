@@ -103,6 +103,17 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+### PYENV
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+    pyenv virtualenvwrapper
+fi
+
+
 
 if which keychain; then
     chmod 600 ~/.ssh/id_rsa
