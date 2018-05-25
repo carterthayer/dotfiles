@@ -115,7 +115,7 @@ fi
 
 
 
-if which keychain; then
+if command -v keychain 1>/dev/null 2>&1; then
     chmod 600 ~/.ssh/id_rsa
     keychain -q ~/.ssh/id_rsa
     source ~/.keychain/$HOSTNAME-sh
