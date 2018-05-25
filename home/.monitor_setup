@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# set this as lightdm display-script.
+# TODO: this can also be a script for hotswapping monitors... maybe
+
+add_monitor ()
+{
+    # $1 is monitor name... $2 is supplied to right of
+    MONITOR=$1
+    RESOLUTION=$(xrandr -q | grep -A1 $MONITOR | grep -v $MONITOR | sed 's/\(x\|*\|+\|.00\)/ /g;s/^[ \t]*//;s/[ \t]*$//;s/ \+/ /g')
+    GTF_OUTPUT=$(gtf $(echo $RESOLUTION | cut -f1 -d ' ') $(echo $RESOLUTION | cut -f2 -d ' ') $(echo $RESOLUTION | cut -f3 -d ' '))
+    MODE_TO_ADD=$(echo $GTF_OUTPUT | grep -o "Modeline.*" | sed 's/Modeline //g')
+    MODE_NAME=\"$(echo $MODE_TO_ADD | grep -o '".*"' | sed 's/"//g')\"
+    xrandr --newmode $MODE_TO_ADD
+    xrandr --addmode $MONITOR $MODE_NAME
+    if [ $# -eq 1 ]; then
+        xrandr --output $MONITOR --mode $MODE_NAME
+    else
+        xrandr --output $MONITOR --mode $MODE_NAME --right-of $2
+    fi
+}
+
+run_polybar ()
+{
+    killall -q polybar
+    if [[ $? -eq 0 ]]; then
+        polybar $1 &
+    fi
+}
+
+NUM_MONITORS=$(xrandr -q | grep connected | grep -v 'disconnected' | wc -l)
+
+
+POLYBAR_RUNNING=$?
+
+if [ $NUM_MONITORS -eq '1' ] ; then
+    add_monitor eDP-1
+    xrandr --output eDP-1 --primary
+    run_polybar laptop
+elif [ $NUM_MONITORS -eq '2' ] ; then
+    # TODO
+    add_monitor eDP-1
+    run_polybar two
+elif [ $NUM_MONITORS -eq '3' ] ; then
+    # TODO
+    add_monitor eDP-1
+    run_polybar three
+elif [ $NUM_MONITORS -eq '4' ] ; then
+    add_monitor DP-1-2
+    add_monitor DP-1-1 DP-1-2
+    add_monitor DP-1-3 DP-1-1
+    xrandr --output DP-1-1 --primary
+    xrandr --output DP-1-2 --rotate left
+    run_polybar four
+else
+    echo 'Cannot find output monitor'
+fi
+
