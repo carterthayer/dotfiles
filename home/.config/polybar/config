@@ -50,8 +50,8 @@ module-margin-right = 2
 font-0 = Inconsolata:size=10;3
 font-1 = FontAwesome:size=10;3
 
-modules-left = bspwm
-modules-center = xwindow
+modules-left = bspwm xwindow
+modules-center =
 modules-right = wired-network wireless-network pulseaudio cpu memory battery cal powermenu
 
 wm-restack = bspwm
@@ -116,7 +116,8 @@ type = internal/xwindow
 label = %title:0:80:…%
 label-foreground = ${colors.foreground}
 label-font = 0
-label-maxlen = 40
+label-maxlen = 80
+
 
 [module/bspwm]
 type = internal/bspwm

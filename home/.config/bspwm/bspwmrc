@@ -44,6 +44,7 @@ else
     echo 'Cannot find output monitor'
 fi
 
+xset m 1/1 0
 
 xrdb "${HOME}/.Xresources"
 

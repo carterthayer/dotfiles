@@ -107,6 +107,7 @@ export EDITOR="$VISUAL"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"

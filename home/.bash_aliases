@@ -26,6 +26,27 @@ alias rmpyc="find . -name '*.pyc' -delete"
 alias wifi-scan="nmcli device wifi rescan && nmcli device wifi list"
 alias wifi-connect="nmcli device wifi connect"
 
+alias pipgdal='pip install GDAL==$(gdal-config --version) --global-option=build_ext --global-option="-I/usr/include/gdal"'
+
+
+#
+# Usage: init3
+#
+# Initialize a virtual environment with python2 for the project in the current directory
+#
+init2(){
+    mkvirtualenv $(basename $(pwd)) -a . --python=python2
+}
+
+#
+# Usage: init3
+#
+# Initialize a virtual environment with python3 for the project in the current directory
+#
+init3(){
+    mkvirtualenv $(basename $(pwd)) -a . --python=python3
+}
+
 #
 # Usage: rf <search string>
 #
@@ -153,5 +174,3 @@ alias cd="mycd" ; export HISTFILE="$HOME/.dir_bash_history$PWD/${USER}_bash_hist
 function hist(){
     rg "$@" ~/.bash_history.d/
 }
-
-

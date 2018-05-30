@@ -24,11 +24,13 @@ set clipboard=unnamed
 
 
 "Colors and syntax
+colorscheme gruvbox
 set background=dark
 set t_Co=256
 "let g:hybrid_use_Xresources = 1
-set termguicolors
-colorscheme gruvbox
+ if (has("termguicolors"))
+  set termguicolors
+ endif
 syntax on
 set number relativenumber
 

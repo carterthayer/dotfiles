@@ -36,7 +36,7 @@ alt + y
 
 # swap the current node and the biggest node
 alt + g
-	bspc node -s biggest
+	bspc node -s biggest.local
 
 #
 # state/flags
@@ -139,4 +139,4 @@ alt + @button{1-3}
 	; bspc pointer -u
 
 super + l
-    i3lock-fancy -f Inconsolata
+    i3lock -S 1 -i ~/.wallpaper.png -t -k --timecolor=ebdbb2cc --datecolor=ebdbb2cc -f Inconsolata
