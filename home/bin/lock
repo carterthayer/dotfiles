@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# from https://github.com/isaacwhanson/dotfiles/blob/develop/bspwm/.config/bspwm/bspwmrc
+get_xrdb() {
+  xrdb -query | grep "$1" | awk '{print $2}' | head -n1 | sed 's/^.//'
+}
+
+i3lock -S 1 -i ~/.wallpaper.png -t -k -f Inconsolata \
+    --timecolor="$(get_xrdb foreground)"ff \
+    --datecolor="$(get_xrdb foreground)"ff \
+    --ringvercolor="$(get_xrdb color4)"ff \
+    --insidevercolor="$(get_xrdb color12)"ff \
+    --insidecolor="$(get_xrdb color2)"ff \
+    --ringcolor="$(get_xrdb color10)"ff \
+    --insidewrongcolor="$(get_xrdb color1)"ff \
+    --ringwrongcolor="$(get_xrdb color9)"ff \
+    --linecolor="$(get_xrdb background)"ff \
+    --keyhlcolor="$(get_xrdb background)"ff \
+    --separatorcolor="$(get_xrdb background)"ff
