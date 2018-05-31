@@ -37,3 +37,4 @@ i3-lock-fancy
 build-essential
 python-dev
 python3-dev
+fonts-powerline
