@@ -50,7 +50,7 @@ module-margin-right = 2
 font-0 = Inconsolata:size=10;3
 font-1 = FontAwesome:size=10;3
 
-modules-left = bspwm xwindow
+modules-left = bspwm xwindowlaptop
 modules-center =
 modules-right = wired-network wireless-network pulseaudio cpu memory battery cal powermenu
 
@@ -118,6 +118,13 @@ label-foreground = ${colors.foreground}
 label-font = 0
 label-maxlen = 80
 
+[module/xwindowlaptop]
+type = internal/xwindow
+label = %title:0:70:…%
+label-foreground = ${colors.foreground}
+label-font = 0
+label-maxlen = 70
+
 
 [module/bspwm]
 type = internal/bspwm
@@ -131,6 +138,7 @@ label-focused-padding = 1
 
 label-occupied = %name%
 label-occupied-padding = 1
+;label-occupied-underline = ${colors.foreground}
 
 label-urgent = %name%
 label-urgent-foreground = ${colors.alert}
@@ -176,8 +184,9 @@ label-full = %percentage%%
 
 format-charging = <ramp-capacity> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-;format-full = <ramp-capacity> <label-full>
+format-full = <ramp-capacity> <label-full>
 
+format-full-underline = ${colors.red}
 format-charging-underline = ${colors.red}
 format-discharging-underline = ${colors.red}
 

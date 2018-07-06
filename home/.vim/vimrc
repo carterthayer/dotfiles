@@ -17,6 +17,14 @@ Plug 'shime/vim-livedown'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-scripts/MultipleSearch'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'joshdick/onedark.vim'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'sheerun/vim-polyglot'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'arcticicestudio/nord-vim'
+Plug 'jacoborus/tender.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -25,9 +33,9 @@ set clipboard=unnamed
 
 "Colors and syntax
 colorscheme gruvbox
+let g:airline_theme='gruvbox'
 set background=dark
 set t_Co=256
-"let g:hybrid_use_Xresources = 1
  if (has("termguicolors"))
   set termguicolors
  endif
@@ -57,15 +65,16 @@ execute "set colorcolumn=" . join(range(line_length+1,335),',')
 "Make ale flake8 accept line lengths up to 100
 let g:ale_python_flake8_args = "--max-line-length=" . string(line_length)
 
+let g:python_highlight_space_errors = 0
+
 "Load indent guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size =2
 "
 "Air line
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_theme='gruvbox'
+let g:airline_powerline_fonts = 1
+
 
 let g:ctrlp_open_multiple_files = 'ij'
 let g:ctrlp_tabpage_position = 'al'

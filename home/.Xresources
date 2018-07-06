@@ -1,13 +1,21 @@
+
 XTerm*termName: xterm-256color
 *bellIsUrgent: true
-!-----------------------------------------------------------------------------
-! File: gruvbox-dark.xresources
-! Description: Retro groove colorscheme generalized
-! Author: morhetz <morhetz@gmail.com>
-! Source: https://github.com/morhetz/gruvbox-generalized
-! Last Modified: 6 Sep 2014
-! -----------------------------------------------------------------------------
+*faceName: Inconsolata for Powerline
+*faceSize: 11
 
+
+
+
+!!-----------------------------------------------------------------------------
+!! File: gruvbox-dark.xresources
+!! Description: Retro groove colorscheme generalized
+!! Author: morhetz <morhetz@gmail.com>
+!! Source: https://github.com/morhetz/gruvbox-generalized
+!! Last Modified: 6 Sep 2014
+!! -----------------------------------------------------------------------------
+!
+!
 ! hard contrast:
 ! *background: #1d2021
 *background: #282828
@@ -37,10 +45,6 @@ XTerm*termName: xterm-256color
 ! LightGrey + White
 *color7:  #a89984
 *color15: #ebdbb2
-
-*faceName: Inconsolata for Powerline
-*faceSize: 11
-
 !-------------------------------------------------------------------------------
 ! Rofi color theme
 !
@@ -54,8 +58,6 @@ XTerm*termName: xterm-256color
 ! Modified: Sat Oct 22 2016 03:11:40 PDT -0700
 !-------------------------------------------------------------------------------
 
-! Enable the extended coloring options
-rofi.color-enabled: true
 
 !                  bg       border   separator
 rofi.color-window: #282828, #a89984, #a89984

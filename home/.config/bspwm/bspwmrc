@@ -13,25 +13,23 @@ bspc config window_gap          12
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      false
-bspc config focus_by_distance    true
-bspc config history_aware_focus  true
-bspc config auto_alternate       true
-bspc config auto_cancel          true
 bspc config click_to_focus       true
 
 bspc config normal_border_color "$(get_xrdb color8)"
 bspc config focused_border_color "$(get_xrdb color7)"
+bspc config active_border_color "$(get_xrdb color8)"
 bspc config presel_feedback_color "$(get_xrdb color8)"
 
 NUM_MONITORS=$(xrandr -q | grep connected | grep -v "disconnected" | wc -l)
 
 if [ $NUM_MONITORS -eq '1' ] ; then
-    bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
+    bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10 R9 R10
     polybar laptop &
 # TODO
 elif [ $NUM_MONITORS -eq '2' ] ; then
     bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
-    polybar two &
+    bspc monitor HDMI-1 -d L1 L2 L3 L4 L5 R6 R7 R8 R9 R10
+    polybar laptop &
 elif [ $NUM_MONITORS -eq '3' ] ; then
     bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 10
     polybar three &

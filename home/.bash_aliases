@@ -22,12 +22,27 @@ alias ptpython3='python3 -m ptpython'
 alias untar='tar -xvzf'
 
 
-alias rmpyc="find . -name '*.pyc' -delete"
+alias rmpyc='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
 alias wifi-scan="nmcli device wifi rescan && nmcli device wifi list"
 alias wifi-connect="nmcli device wifi connect"
 
 alias pipgdal='pip install GDAL==$(gdal-config --version) --global-option=build_ext --global-option="-I/usr/include/gdal"'
 
+
+#
+# Usage: open-package <python package>
+#
+# Open the source directory for a python package installed in the current virtualenv
+#
+open-package(){
+
+    if [ -z "$VIRTUAL_ENV" ]; then
+        echo "No virtual env active"
+        return 1
+    else
+        cd $VIRTUAL_ENV/lib/python$(python -c "import sys; print('.'.join(str(x) for x in sys.version_info[0:2]))")/site-packages/$1
+    fi
+}
 
 #
 # Usage: init3
