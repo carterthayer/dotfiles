@@ -1,5 +1,5 @@
 
-XTerm*termName: xterm-256color
+! XTerm*termName: xterm-256color
 *bellIsUrgent: true
 *faceName: Inconsolata for Powerline
 *faceSize: 11

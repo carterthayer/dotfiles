@@ -21,6 +21,21 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 export PANEL_FIFO="/tmp/panel-fifo"
 export PATH=$PATH:~/.config/panel
+
 export PATH=~/.firefox:$PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# Created by `userpath` on 2020-09-14 14:10:58
+export PATH="$PATH:/home/carter/.local/bin"
+export AWS_DEFAULT_REGION="us-east-1"

@@ -14,6 +14,8 @@ alias gti='git'
 alias svim='vim'
 alias pytohn='python'
 
+alias gs="git status"
+
 # Make opening ptpython correct
 alias ptpython='python -m ptpython'
 alias ptpython3='python3 -m ptpython'
@@ -97,6 +99,7 @@ rv(){
 awsprofile(){
     if [ ! -z "$1" ]; then
         export AWS_DEFAULT_PROFILE=$1
+        export AWS_PROFILE=$1
     else
         echo "$AWS_DEFAULT_PROFILE"
     fi

@@ -106,12 +106,11 @@ export EDITOR="$VISUAL"
 ### PYENV
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
+#export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
-    pyenv virtualenvwrapper
 fi
 
 
@@ -140,3 +139,11 @@ fi
 export PROJECT_HOME="/home/carter/git"
 
 loadhistory $HOME
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Created by `userpath` on 2020-09-14 14:10:58
+export PATH="/home/carter/.local/bin:$PATH"
